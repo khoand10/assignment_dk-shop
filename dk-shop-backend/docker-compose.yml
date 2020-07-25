@@ -1,0 +1,38 @@
+version: "3"
+services:
+  api:
+      build:
+        context: ./api
+        dockerfile: "./Dockerfile"
+      container_name: dk_shop_api
+      restart: always
+      ports:
+          - "3002:3002"
+      volumes:
+          - ./api:/usr/src/api
+          - /usr/src/api/node_modules
+      depends_on:
+          - mongodb
+      environment:
+        WAIT_HOSTS: tracker_mongodb:27017
+      # extra_hosts:
+      #   - "sso.docker.localhost:192.168.65.2"
+      #   - "tracker-api.docker.localhost:192.168.65.2"
+      # labels:
+      #   - "traefik.docker.network=docker-localhost"
+      #   - "traefik.backend=tracker-api_be"
+      #   - "traefik.frontend.passHostHeader=true"
+      #   - "traefik.frontend.rule=Host:tracker-api.docker.localhost"
+  mongodb:
+      image: mongo
+      restart: always
+      container_name: tracker_mongodb
+      volumes:
+          - ./data/db:/data/db
+      ports:
+          - 27017:27017
+      command: mongod
+networks:
+ default:
+   external:
+     name: docker-localhost
