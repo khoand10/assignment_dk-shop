@@ -5,6 +5,7 @@ import LayoutAdmin from '../pages/layouts/LayoutAdmin'
 //Admin
 import Dashboard from '../pages/views/Admin/Dashboard'
 import ProductsManager from '../pages/views/Admin/Products'
+import Categories from '../pages/views/Admin/Categories';
 
 //Views
 import About from '../pages/views/Main/About'
@@ -33,6 +34,9 @@ const Routers = ({ products, onRemove }) => {
                             </Route>
                             <Route path='/admin/products'>
                                 <ProductsManager products={products} onRemove={onHandleRemove} />
+                            </Route>
+                            <Route path='/admin/categories'>
+                                <Categories products={products}/>
                             </Route>
                         </Switch>
                     </LayoutAdmin>
