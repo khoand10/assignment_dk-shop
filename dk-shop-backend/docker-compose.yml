@@ -14,7 +14,7 @@ services:
       depends_on:
           - mongodb
       environment:
-        WAIT_HOSTS: tracker_mongodb:27017
+        WAIT_HOSTS: dkshop_mongodb:27017
       # extra_hosts:
       #   - "sso.docker.localhost:192.168.65.2"
       #   - "tracker-api.docker.localhost:192.168.65.2"
@@ -26,7 +26,7 @@ services:
   mongodb:
       image: mongo
       restart: always
-      container_name: tracker_mongodb
+      container_name: dkshop_mongodb
       volumes:
           - ./data/db:/data/db
       ports:

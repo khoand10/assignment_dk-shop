@@ -2,3 +2,5 @@ export const USER_LOGGED_IN = "USER_LOGGED_IN";
 export const USER_LOGGED_OUT = "USER_LOGGED_OUT";
 
 export const GET_CATEGORY = "GET_CATEGORY";
+export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
+export const NEW_CATEGORY = "NEW_CATEGORY";

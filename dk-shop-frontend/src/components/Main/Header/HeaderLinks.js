@@ -21,7 +21,7 @@ import CustomDropdown from "components/Main/CustomDropdown/CustomDropdown.js";
 import Button from "components/Main/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
-import {logout} from "actions/login";
+import {logout} from "actions/authenticate";
 
 const useStyles = makeStyles(styles);
 

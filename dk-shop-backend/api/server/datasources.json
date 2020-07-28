@@ -1,8 +1,8 @@
 {
   "db": {
-    "host": "tracker_mongodb",
+    "host": "dkshop_mongodb",
     "port": 27017,
-    "database": "tracker-db",
+    "database": "dkshop-db",
     "name": "db",
     "connector": "mongodb"
   }

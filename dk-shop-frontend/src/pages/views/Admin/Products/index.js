@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const ProductsManager = ({ products, onRemove }) => {
-    const removeHandle = (id) => {
-        onRemove(id)
-    }
+const ProductsManager = ({ products = [] }) => {
     return (
         <div>
             {/* Page Heading */}
@@ -37,7 +34,7 @@ const ProductsManager = ({ products, onRemove }) => {
                                         <td><img src={image} alt="" width="50" /></td>
                                         <td>{price}</td>
                                         <td>
-                                            <button className="btn btn-primary" onClick={() => removeHandle(id)}>Xóa</button>
+                                            <button className="btn btn-primary">Xóa</button>
                                         </td>
                                     </tr>
                                 ))}

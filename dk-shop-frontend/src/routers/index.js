@@ -5,7 +5,8 @@ import LayoutAdmin from '../pages/layouts/LayoutAdmin'
 //Admin
 import Dashboard from '../pages/views/Admin/Dashboard'
 import ProductsManager from '../pages/views/Admin/Products'
-import Categories from '../pages/views/Admin/Categories';
+import Categories from '../pages/views/Admin/Categories/ListCategory';
+import CategoryDetail from '../pages/views/Admin/Categories/CategoryDetail';
 
 //Views
 import About from '../pages/views/Main/About'
@@ -19,24 +20,27 @@ import { createBrowserHistory } from "history";
 var hist = createBrowserHistory();
 
 
-const Routers = ({ products, onRemove }) => {
-    const onHandleRemove = (id) => {
-        onRemove(id)
-    }
+const Routers = () => {
     return (
         <Router>
             <Switch>
-                <Route path="/admin/:path?" exact>
+                <Route path="/admin/:path?/:id?" exact>
                     <LayoutAdmin>
                         <Switch>
                             <Route path='/admin' exact>
                                 <Dashboard />
                             </Route>
                             <Route path='/admin/products'>
-                                <ProductsManager products={products} onRemove={onHandleRemove} />
+                                <ProductsManager/>
                             </Route>
                             <Route path='/admin/categories'>
-                                <Categories products={products}/>
+                                <Categories/>
+                            </Route>
+                            {/* <Route path='/admin/category/new-category'>
+                                <CategoryDetail/>
+                            </Route> */}
+                            <Route path='/admin/category/:categoryId?'>
+                                <CategoryDetail/>
                             </Route>
                         </Switch>
                     </LayoutAdmin>

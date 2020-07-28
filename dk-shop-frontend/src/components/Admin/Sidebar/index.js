@@ -26,14 +26,20 @@ const Sidebar = props => {
             {/* Nav Item - Pages Collapse Menu */}
             <li className="nav-item">
                 <a className="nav-link collapsed" href="/admin/products">
-                    <i className="fas fa-fw fa-cog" />
+                    <i className="fas fa-tshirt" />
                     <span>Products</span>
                 </a>
             </li>
             <li className="nav-item">
                 <a className="nav-link collapsed" href="/admin/categories">
-                    <i className="fas fa-fw fa-cog" />
+                    <i className="fas fa-boxes" />
                     <span>Categories</span>
+                </a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link collapsed" href="/admin/customers">
+                    <i className="fas fa-users" />
+                    <span>Customers</span>
                 </a>
             </li>
             <hr className="sidebar-divider" />

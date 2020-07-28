@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 
 import LoginPage from "./LoginPage";
 
-import { login } from "actions/login";
+import { login } from "actions/authenticate";
 
 const mapStateToProps = (state) => ({
   userLogin: state.login,

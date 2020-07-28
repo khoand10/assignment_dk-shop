@@ -1,6 +1,13 @@
-.admin-page {
-    header {
+.categories {
+    .card-body {
+        width: 70%;
     }
-    footer {
+    .table {
+        .category-name {
+            min-width: 200px;
+        }
+    }
+    .button-add-new {
+        float: right;
     }
 }
