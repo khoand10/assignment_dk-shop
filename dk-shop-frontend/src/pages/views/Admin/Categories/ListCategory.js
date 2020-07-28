@@ -72,7 +72,7 @@ const Categories = (props) => {
                                             <button className="btn btn-primary" onClick={() => handleRemove(key, categories[key].name)}>Remove</button>
                                         </td>
                                         <td>
-                                            <button className="btn btn-primary" onClick={() => alert("detail ", categories[key].name)}>Edit</button>
+                                            <button className="btn btn-primary" onClick={() => props.history.push(`/admin/category/${key}`)}>Edit</button>
                                         </td>
                                     </tr>
                                 ))}

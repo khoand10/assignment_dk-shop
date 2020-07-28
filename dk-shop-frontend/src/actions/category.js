@@ -30,7 +30,7 @@ export const removeCategory = (categoryId) => {
 
 export const newCategory = (newCategory) => {
   return async (dispatch) => {
-    const res = await Axios.post(`${BACK_END_URL}/api/categories`, newCategory);
+    const res = await Axios.get(`${BACK_END_URL}/api/categories`, newCategory);
     console.log('getCategories ', res);
     if (res.status === 200) {
         dispatch({
@@ -40,4 +40,9 @@ export const newCategory = (newCategory) => {
     }
     return res;
   };
+}
+
+export const getCategory = (categoryId) => {
+  const res = Axios.get(`${BACK_END_URL}/api/categories/${categoryId}`);
+  return res;
 }
