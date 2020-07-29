@@ -4,16 +4,17 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter , useParams} from "react-router-dom";
 
-import {newCategory, getCategory} from "actions/category";
+import {newCategory, getCategory, updateCategory} from "actions/category";
 import {selectCategories} from "selectors/index";
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-function CategoryDetail(props) {
+const CategoryDetail = (props) => {
     const {categoryId} = useParams();
 
     const [categoryName, setCategoryName] = useState('');
     const [categoryDes, setCategoryDes] = useState('');
+    const [message, setMessage] = useState('');
     const title = categoryId === "new-category" ? "New Category" : "Update Category";
     const buttonName = categoryId === "new-category" ? "Save" : "Update";
 
@@ -38,20 +39,35 @@ function CategoryDetail(props) {
     }, []);
 
     const save = async (event) => {
-        const newCategory = {
+        event.preventDefault();
+        let newCategory = {
             name: categoryName,
             description: categoryDes,
         }
-        const rs = await props.newCategory(newCategory);
-        if (rs.status === 200) {
-            setCategoryName('');
-            setCategoryDes('');
+        let rs;
+        if (categoryId === "new-category") {
+            rs = await props.newCategory(newCategory);
+            if (rs.status === 200) {
+                props.history.push(`/admin/category/${rs.data.id}`);
+                setMessage("Create Success!")
+                setTimeout(() => {
+                    setMessage('');
+                }, 5000);
+            }
+        } else {
+            newCategory.id = categoryId;
+            rs = await props.updateCategory(newCategory)
+            if (rs.status === 200) {
+                setMessage("Update Success!")
+                setTimeout(() => {
+                    setMessage('');
+                }, 5000);
+            }
         }
-        event.preventDefault();
     }
 
     return (
-        <div>
+        <div className='category-detail'>
             <h2>{title}</h2>
             <Form>
                 <Form.Group controlId="formBasicName">
@@ -75,6 +91,7 @@ function CategoryDetail(props) {
                 <Button variant="primary" type="submit" onClick={save}>
                     {buttonName}
                 </Button>
+                {message.length !== 0 && <Alert className='message' variant={'success'}>{message}</Alert>}
             </Form>
         </div>
     )
@@ -83,6 +100,7 @@ function CategoryDetail(props) {
 CategoryDetail.propTypes = {
     newCategory: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
+    updateCategory: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -95,6 +113,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
       {
         newCategory,
+        updateCategory,
       },
       dispatch
     );

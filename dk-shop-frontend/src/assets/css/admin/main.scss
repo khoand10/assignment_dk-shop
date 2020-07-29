@@ -11,3 +11,17 @@
         float: right;
     }
 }
+
+.category-detail {
+    .message {
+        margin-top: 10px;
+    }
+}
+
+#accordionSidebar {
+    .nav-item {
+        .nav-link:hover {
+            cursor: pointer;
+        }
+    }
+}

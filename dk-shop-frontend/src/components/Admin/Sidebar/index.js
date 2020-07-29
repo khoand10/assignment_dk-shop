@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from "react-router-dom";
 
 const Sidebar = props => {
     return (
@@ -13,7 +14,7 @@ const Sidebar = props => {
             </a>
             <hr className="sidebar-divider my-0" />
             <li className="nav-item">
-                <a className="nav-link" href="/admin">
+                <a className="nav-link" onClick={() => props.history.push('/admin')}>
                     <i className="fas fa-fw fa-tachometer-alt" />
                     <span>Dashboard</span></a>
             </li>
@@ -25,19 +26,19 @@ const Sidebar = props => {
              </div>
             {/* Nav Item - Pages Collapse Menu */}
             <li className="nav-item">
-                <a className="nav-link collapsed" href="/admin/products">
+                <a className="nav-link collapsed" onClick={() => props.history.push('/admin/products')}>
                     <i className="fas fa-tshirt" />
                     <span>Products</span>
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link collapsed" href="/admin/categories">
+                <a className="nav-link collapsed" onClick={() => props.history.push('/admin/categories')}>
                     <i className="fas fa-boxes" />
                     <span>Categories</span>
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link collapsed" href="/admin/customers">
+                <a className="nav-link collapsed" onClick={() => props.history.push('/admin/customers')}>
                     <i className="fas fa-users" />
                     <span>Customers</span>
                 </a>
@@ -51,4 +52,4 @@ Sidebar.propTypes = {
 
 }
 
-export default Sidebar
+export default withRouter(Sidebar);

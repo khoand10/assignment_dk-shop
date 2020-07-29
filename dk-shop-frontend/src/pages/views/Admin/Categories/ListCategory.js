@@ -88,7 +88,7 @@ const Categories = (props) => {
 }
 
 Categories.propTypes = {
-    getCategories: PropTypes.object.isRequired,
+    getCategories: PropTypes.func.isRequired,
     removeCategory: PropTypes.func.isRequired,
 }
 
