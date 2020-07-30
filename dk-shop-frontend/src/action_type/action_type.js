@@ -5,3 +5,8 @@ export const GET_CATEGORY = "GET_CATEGORY";
 export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
 export const NEW_CATEGORY = "NEW_CATEGORY";
 export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
+
+export const GET_PRODUCT = "GET_PRODUCT";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const NEW_PRODUCT = "NEW_PRODUCT";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
