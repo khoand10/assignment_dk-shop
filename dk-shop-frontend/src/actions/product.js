@@ -54,7 +54,7 @@ export const getProducts = (sizePerPage, page) => {
 //   };
 // }
 
-// export const getCategory = (categoryId) => {
-//   const res = Axios.get(`${BACK_END_URL}/api/categories/${categoryId}`);
-//   return res;
-// }
+export const getProduct = (productId) => {
+  const res = Axios.get(`${BACK_END_URL}/api/products/${productId}`);
+  return res;
+}

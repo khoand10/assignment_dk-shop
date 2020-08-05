@@ -4,7 +4,8 @@ import LayoutMain from '../pages/layouts/LayoutMain'
 import LayoutAdmin from '../pages/layouts/LayoutAdmin'
 //Admin
 import Dashboard from '../pages/views/Admin/Dashboard'
-import ProductsManager from '../pages/views/Admin/Products'
+import ProductsManager from '../pages/views/Admin/Products';
+import ProductDetail from '../pages/views/Admin/Products/ProductDetail';
 import Categories from '../pages/views/Admin/Categories/ListCategory';
 import CategoryDetail from '../pages/views/Admin/Categories/CategoryDetail';
 import ImageUpload from '../components/ImageUpload';
@@ -33,6 +34,9 @@ const Routers = () => {
                             </Route>
                             <Route path='/admin/products'>
                                 <ProductsManager/>
+                            </Route>
+                            <Route path='/admin/product/:productId?'>
+                                <ProductDetail/>
                             </Route>
                             <Route path='/admin/uploadimageproduct'>
                                 <ImageUpload/>
