@@ -7,6 +7,7 @@ import Dashboard from '../pages/views/Admin/Dashboard'
 import ProductsManager from '../pages/views/Admin/Products'
 import Categories from '../pages/views/Admin/Categories/ListCategory';
 import CategoryDetail from '../pages/views/Admin/Categories/CategoryDetail';
+import ImageUpload from '../components/ImageUpload';
 
 //Views
 import About from '../pages/views/Main/About'
@@ -33,12 +34,13 @@ const Routers = () => {
                             <Route path='/admin/products'>
                                 <ProductsManager/>
                             </Route>
+                            <Route path='/admin/uploadimageproduct'>
+                                <ImageUpload/>
+                            </Route>
+
                             <Route path='/admin/categories'>
                                 <Categories/>
                             </Route>
-                            {/* <Route path='/admin/category/new-category'>
-                                <CategoryDetail/>
-                            </Route> */}
                             <Route path='/admin/category/:categoryId?'>
                                 <CategoryDetail/>
                             </Route>
