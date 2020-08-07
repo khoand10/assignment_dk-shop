@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 
-import {getProducts} from "actions/product";
+import {getProducts, removeProduct} from "actions/product";
 import {getCategories} from "actions/category";
 import {selectProducts, selectCategories} from "selectors";
 
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
       {
         getProducts,
         getCategories,
+        removeProduct,
       },
       dispatch
     );

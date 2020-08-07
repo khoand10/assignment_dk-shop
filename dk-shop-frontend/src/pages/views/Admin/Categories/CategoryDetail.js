@@ -11,7 +11,6 @@ import { Form, Button, Alert } from 'react-bootstrap';
 
 const CategoryDetail = (props) => {
     const {categoryId} = useParams();
-
     const [categoryName, setCategoryName] = useState('');
     const [categoryDes, setCategoryDes] = useState('');
     const [message, setMessage] = useState('');
@@ -77,7 +76,7 @@ const CategoryDetail = (props) => {
                         value={categoryName}
                     />
                     <Form.Text className="text-muted">
-                    Name of category
+                    Name of category XXXX
                     </Form.Text>
                 </Form.Group>
 
