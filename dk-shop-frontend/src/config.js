@@ -1,1 +1,1 @@
-export const BACK_END_URL = "http://localhost:3002";
+export const BACK_END_URL = "http://192.168.2.105:3002";

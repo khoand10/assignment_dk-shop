@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -25,7 +25,13 @@ const ProductDetail = (props) => {
     const buttonName = productId === "new-product" ? "Save" : "Update";
 
     useEffect(() => {
-        props.getCategories();
+        props.getCategories().then(
+            (res) => {
+                if (res.status === 200 && res.data.length > 0) {
+                    setCategoryID(res.data[0].id || '');
+                }
+            }
+        )
         if (productId !== "new-product") {
             let currentProduct = props.products[productId] || null;
             if (currentProduct) {
@@ -108,6 +114,19 @@ const ProductDetail = (props) => {
       });
     }
 
+    const handleChangePriceValue = (value) => {
+        const re = /^\d+(\.\d{1,2})?$/i;
+        if (value === '' || re.test(value)) {
+            setProductPrice(value);
+        }
+    }
+    const handleChangeSalePriceValue = (value) => {
+        const re = /^\d+(\.\d{1,2})?$/i;
+        if (value === '' || re.test(value)) {
+            setProductSalePrice(value);
+        }
+    }
+
     return (
         <div className='product-detail'>
             <h2>{title}</h2>
@@ -124,7 +143,7 @@ const ProductDetail = (props) => {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicDescription">
-                    <Form.Label>DescriptionXX</Form.Label>
+                    <Form.Label>Description</Form.Label>
                     <Form.Control as="textarea" placeholder="Description" rows="3" name="productDes"
                         onChange={(e) => setProductDes(e.target.value)}
                         value={productDes}
@@ -132,15 +151,15 @@ const ProductDetail = (props) => {
                 </Form.Group>
                 <Form.Group controlId="formBasicDescription">
                     <Form.Label>Price</Form.Label>
-                    <Form.Control type="text" placeholder="price" name="productPrice"
-                        onChange={(e) => setProductPrice(e.target.value)}
+                    <Form.Control type="text" placeholder="Price" name="productPrice"
+                        onChange={(e) => handleChangePriceValue(e.target.value)}
                         value={productPrice}
                     />
                 </Form.Group>
                 <Form.Group controlId="formBasicDescription">
                     <Form.Label>Sale Price</Form.Label>
-                    <Form.Control type="text" placeholder="Description" name="productSaleProce"
-                        onChange={(e) => setProductSalePrice(e.target.value)}
+                    <Form.Control type="text" placeholder="Sale Price" name="productSaleProce"
+                        onChange={(e) => handleChangeSalePriceValue(e.target.value)}
                         value={productSalePrice}
                     />
                 </Form.Group>
