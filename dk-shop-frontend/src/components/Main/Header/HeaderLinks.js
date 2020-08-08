@@ -2,6 +2,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import _ from "lodash";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 // react components for routing our app without refresh
@@ -89,18 +90,23 @@ function HeaderLinks(props) {
             color: "transparent"
           }}
           buttonIcon={Apps}
-          dropdownList={[
+          // dropdownList={[
+          //   <Link to="/" className={classes.dropdownLink}>
+          //     Nam
+          //   </Link>,
+          //   <a
+          //     href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
+          //     target="_blank"
+          //     className={classes.dropdownLink}
+          //   >
+          //     Nữ
+          //   </a>
+          // ]}
+          dropdownList={!_.isEmpty(props.categories) && Object.keys(props.categories).map((key, index) => (
             <Link to="/" className={classes.dropdownLink}>
-              Nam
-            </Link>,
-            <a
-              href="https://creativetimofficial.github.io/material-kit-react/#/documentation?ref=mkr-navbar"
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              Nữ
-            </a>
-          ]}
+              {props.categories[key].name}
+            </Link>
+          ))}
         />
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -130,6 +136,7 @@ function HeaderLinks(props) {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  categories: state.categories,
 });
 
 function mapDispatchToProps(dispatch) {

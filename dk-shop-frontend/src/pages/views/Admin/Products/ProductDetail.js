@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter , useParams} from "react-router-dom";
+import InputNumber from 'react-input-number';
 
 import { Form, Button, Alert, ProgressBar} from 'react-bootstrap';
 import {getCategories} from "actions/category";
@@ -114,19 +115,6 @@ const ProductDetail = (props) => {
       });
     }
 
-    const handleChangePriceValue = (value) => {
-        const re = /^\d+(\.\d{1,2})?$/i;
-        if (value === '' || re.test(value)) {
-            setProductPrice(value);
-        }
-    }
-    const handleChangeSalePriceValue = (value) => {
-        const re = /^\d+(\.\d{1,2})?$/i;
-        if (value === '' || re.test(value)) {
-            setProductSalePrice(value);
-        }
-    }
-
     return (
         <div className='product-detail'>
             <h2>{title}</h2>
@@ -151,17 +139,11 @@ const ProductDetail = (props) => {
                 </Form.Group>
                 <Form.Group controlId="formBasicDescription">
                     <Form.Label>Price</Form.Label>
-                    <Form.Control type="text" placeholder="Price" name="productPrice"
-                        onChange={(e) => handleChangePriceValue(e.target.value)}
-                        value={productPrice}
-                    />
+                    <InputNumber className='form-control' min={10} max={100} step={0.03} value={productPrice} onChange={setProductPrice} />
                 </Form.Group>
                 <Form.Group controlId="formBasicDescription">
                     <Form.Label>Sale Price</Form.Label>
-                    <Form.Control type="text" placeholder="Sale Price" name="productSaleProce"
-                        onChange={(e) => handleChangeSalePriceValue(e.target.value)}
-                        value={productSalePrice}
-                    />
+                    <InputNumber className='form-control' min={10} max={100} step={0.03} value={productSalePrice} onChange={setProductSalePrice} />
                 </Form.Group>
                 <Form.Group controlId="category.ControlSelect1">
                     <Form.Label>Category</Form.Label>
@@ -173,7 +155,7 @@ const ProductDetail = (props) => {
                 </Form.Group>
                 <Form.Group>
                     <ProgressBar now={progress} label={`${progress}%`} />
-                    <Form.File id="imageFormControlFile1" label="Image" onChange={handleUploadFile} />
+                    <Form.File multiple={true} id="imageFormControlFile1" label="Image" onChange={handleUploadFile} />
                     <br/>
                     <img src={imageUrl || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="100" width="200"/>
                 </Form.Group>

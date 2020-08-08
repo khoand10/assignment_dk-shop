@@ -24,6 +24,7 @@
     "react-datetime": "2.16.3",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.3.0",
+    "react-input-number": "^5.0.19",
     "react-js-pagination": "^3.0.3",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",

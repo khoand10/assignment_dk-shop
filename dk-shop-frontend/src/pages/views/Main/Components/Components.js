@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,9 +19,16 @@ import Product from "./Sections/Product";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
+import {getCategories} from "actions/category";
+import {getProducts} from "actions/product";
+
 const useStyles = makeStyles(styles);
 
 function Components(props) {
+  useEffect(() => {
+    props.getCategories();
+    props.getProducts();
+  }, []);
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -60,10 +68,19 @@ function Components(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log("users ", state.users);
   return {
-    todos: state.users,
+    users: state.users,
   };
 };
 
-export default connect(mapStateToProps, null)(Components);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      getCategories,
+      getProducts,
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Components);
