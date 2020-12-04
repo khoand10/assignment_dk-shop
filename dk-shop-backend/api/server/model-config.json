@@ -25,5 +25,13 @@
   "user": {
     "dataSource": "db",
     "public": true
+  },
+  "customer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "order": {
+    "dataSource": "db",
+    "public": true
   }
 }

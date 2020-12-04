@@ -1,0 +1,37 @@
+{
+    "name": "customer",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "first_name": {
+        "type": "string",
+        "required": true
+      },
+      "last_name": {
+        "type": "string",
+        "required": true
+      },
+      "phone": {
+        "type": "string",
+        "required": true
+      },
+      "email": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "validations": [],
+    "relations": {
+        "category": {
+            "type": "hasMany",
+            "model": "order",
+            "foreignKey": "customer_id"
+          }
+    },
+    "acls": [],
+    "methods": {}
+  }
+  
